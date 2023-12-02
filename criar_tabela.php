@@ -9,7 +9,7 @@
     //Try catch com a finalidade de fazer a com o banco de dados 
     try {
         $conn = new PDO("mysql:host=$servidor;dbname=$banco", $usuario, $senha);
-        //echo "Deuuu cerrtoooo";
+        //echo "Deuuu cerrtoooo"";
         //Configura erros
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -17,8 +17,8 @@
         $sql = "CREATE TABLE usuarios (
             id INT PRIMARY KEY AUTO_INCREMENT,
             nome VARCHAR(20) NOT NULL,
-            sobrenome VARCHAR(120),
-            email VARCHAR(50)
+            sobrenome VARCHAR(120) NOT NULL,
+            email VARCHAR(50) NOT NULL
         );";
 
         //Comando SQL para insirir valores para a tabela
@@ -40,7 +40,7 @@
 
         //Capturar qual erro com o exception do PDO e dizer o erro na tela
     } catch (PDOException $e) {
-        echo "Há tabela já foi criada" . $e->getMessage();
+        echo "Tabela já foi criada" . $e->getMessage();
         header('Location: index.php');
     }
 
